@@ -1,0 +1,68 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block header %} 
+{% include 'header.html' %}
+<div class="page-details overlay">
+  <div class="inner-container details">
+      <h4>User Dashboard</h4>
+      <p>
+        <span><img class="" src="{% static 'img/icons/icons8-comment-64.png' %}" alt="" srcset=""></span>
+        <span>View inquries you've made</span>
+      </p>
+  </div>
+</div>
+{% endblock header %} 
+
+
+{% block content %}
+<div class="inner-container">
+  {% include 'notify.html' %}
+</div>
+
+<div class="inner-container">
+  <div class="crum-container">
+    <a href="{% url 'pages:home' %}">Home / </a> 
+    <a href="{% url 'pages:listings' %}">Listings / </a> 
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+  </div>
+</div>
+
+<div class="inner-container dashboard">
+  <h3 class="wlc-user inq-text">Here are some properties you inquired about in our Listings</h3>
+
+  <table cellspacing=0>
+    <thead>
+      <tr>
+         <th>#</th>
+         <th>Property</th>
+         <th>Timestamp</th>
+         <th>Details</th>
+      </tr>
+   </thead>
+
+   <tbody>
+     {% for inqury in inquries %}
+     <tr>
+      <td><p>{{forloop.counter}}</p></td>
+      <td><a href="{{inqury.listing.get_absolute_url}}" class="property">{{inqury.listing.address}}</a></td>
+      <td><p>{{inqury.timestamp|timesince}} ago</p></td>
+      <td><a href="{{inqury.listing.get_absolute_url}}" class="view-listing">View Listing</a></td>
+    </tr>
+    {% empty %}
+    <tr class="empty-tr">
+      <td colspan="4">
+        You've not made inquiry on any Listings. 
+        <a class="empty-cart" href="{% url 'pages:listings' %}">View latest Listings
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+   </tbody>
+  </table>
+</div>
+
+
+
+
+
+{% endblock content %}

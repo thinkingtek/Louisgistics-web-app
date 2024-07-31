@@ -1,0 +1,93 @@
+body {
+  margin: 0; }
+
+.shipment-container {
+  height: 100vh;
+  width: 100vw;
+  background-size: 100%;
+  background: url("/static/img/backgrounds/containers.jpg") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.9rem;
+  overflow-x: hidden; }
+  .shipment-container .form-container {
+    overflow-x: hidden;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 650px;
+    padding: 1.2rem 1.4rem;
+    border-radius: 7px;
+    background-color: #f5f5f5; }
+  .shipment-container h4 {
+    letter-spacing: 0.05rem;
+    margin-bottom: 0.17rem;
+    color: #2c234d;
+    font-family: "roboto-light";
+    font-size: 0.9rem; }
+  .shipment-container .lastly-updated {
+    font-size: 0.75rem;
+    letter-spacing: 0.015rem; }
+  .shipment-container .input-container {
+    margin-bottom: 0.5rem; }
+  .shipment-container .grid-column-two {
+    display: grid;
+    grid-gap: 0.8rem; }
+  .shipment-container .grid-column-three {
+    display: grid;
+    grid-gap: 0.8rem; }
+  .shipment-container .grid-column-four {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.8rem; }
+  .shipment-container .form-inputs input,
+  .shipment-container .form-inputs select,
+  .shipment-container .form-inputs textarea,
+  .shipment-container .form-inputs button {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    font-family: sans-serif; }
+  .shipment-container .form-inputs input,
+  .shipment-container .form-inputs select,
+  .shipment-container .form-inputs textarea {
+    border-radius: 5px;
+    border: 1px solid #efebeb;
+    background: #fff;
+    outline: none;
+    color: #292929; }
+  .shipment-container .form-inputs select {
+    cursor: pointer;
+    padding: 0.5rem 0.2rem; }
+  .shipment-container .form-inputs button {
+    cursor: pointer;
+    color: white;
+    font-size: 1.04rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #f16821; }
+    .shipment-container .form-inputs button:hover {
+      background-color: #dd4e0c; }
+  .shipment-container a {
+    border: none;
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    padding: 0.25rem 0.3rem;
+    font-size: 0.8rem;
+    border-radius: 5px; }
+    .shipment-container a:last-child {
+      background-color: #f16821; }
+    .shipment-container a:hover {
+      background-color: #777777; }
+  .shipment-container .errors {
+    color: red;
+    font-size: 0.77rem;
+    padding: 0.08rem 0; }
+  .shipment-container .alert {
+    margin-top: 0; }
+
+.d-none {
+  display: none; }

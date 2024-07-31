@@ -1,0 +1,119 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load template_tags %}
+{% block header %} 
+{% include 'nav.html' %}
+<div class="page-details overlay-bg">
+  <div class="inner-container details">
+    
+    <form action="{% url 'logistics:shipment-detail' %}" method="GET" class="tracking-form">
+      {% csrf_token %}
+      
+      <div class="form-inputs">
+        {{form.track_id}}
+        {% if form.non_field_errors %}
+
+        {% for error in form.non_field_errors %}
+        <p class="error">{{error}}</p>
+        {% endfor %}
+      
+        {% endif %}
+      </div>
+      <button type="submit">TRACK</button>
+    </form>
+    
+  </div>
+</div>
+{% endblock header %} 
+
+
+{% block content %} 
+<div class="inner-container">
+  
+</div>
+
+{% if shipment %}
+<div class="inner-container">
+  <div class="shipment_table">
+    {% if request.user|has_group:"staff" %}
+    <a href="{{shipment.get_update_url}}" class="view-update-shipment">update</a>
+    {% else %}
+    <h4>Tracking ID :  {{shipment.tracking_id}}</h4>
+    {% endif %}
+
+    <div class="web_table">
+
+      <table cellspacing=0>
+        <thead>
+          <tr>
+             <th>TIMESTAMP</th>
+             <th>LAND/AIR..</th>
+             <th>LIQUID/SOLID</th>
+             <th>WEIGHT (Kg/Lbs) </th>
+             <th>STATUS</th>
+          </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td><P>{{shipment.created_timestamp|timesince}} ago</P></td>
+         <td><p>{{shipment.transport_method|title}}</p></td>
+         <td><p>{{shipment.substance_type|title}}</p></td>
+         <td><p>{{shipment.units|title}}({{shipment.unit_of_measurement|title}})</p></td>
+         <td><p>{{shipment.status|title}}</p></td>
+       </tr>
+       
+      </tbody>
+      </table>
+    </div>
+
+    <div class="sm_tab_table">
+      <table cellspacing=0>
+        <thead>
+          <tr>
+             <th>TIMESTAMP</th>
+             <th>LAND/AIR..</th>
+             <th>LIQUID/SOLID</th>
+             <th>WEIGHT (Kg/Lbs) </th>
+             <th>STATUS</th>
+          </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td><P>{{shipment.created_timestamp|timesince}}</P></td>
+         <td><p>{{shipment.transport_method|title}}</p></td>
+         <td><p>{{shipment.substance_type|title}}</p></td>
+         <td><p>{{shipment.units|title}}({{shipment.unit_of_measurement|title}})</p></td>
+         <td><p>{{shipment.status|title}}</p></td>
+       </tr>
+       
+      </tbody>
+      </table>
+    </div>
+
+    <!-- for mobile view -->
+    <div class="mobile_table">
+
+      <table cellspacing=0>
+        <thead>
+          <tr>
+             <th>TIMESTAMP</th>
+             <th>WEIGHT (Kg/Lbs) </th>
+             <th>STATUS</th>
+          </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td><P>{{shipment.created_timestamp|timesince}}</P></td>
+         <td><p>{{shipment.units|title}}({{shipment.unit_of_measurement|title}})</p></td>
+         <td><p>{{shipment.status|title}}</p></td>
+       </tr>
+       
+      </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+
+{% endblock content %}

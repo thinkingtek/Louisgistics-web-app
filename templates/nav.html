@@ -1,0 +1,50 @@
+{% load static %}
+{% load template_tags %}
+  <nav class="header_navbar">
+    <div class="navbar_container flex_center_btw">
+
+      <div class="logo_name ">
+        <a href="{% url 'logistics:home' %}" class="logo_link flex_center">
+          <img src="{% static 'img/icons/icons8-in-transit-40.png' %}" alt="logo img" srcset="">
+          <div class="logo-name">
+            <p>LOUISGISTIC</p>
+            <h2>XPRESS</h2>
+          </div>
+        </a>
+      </div>
+  
+      <ul class="navbar_ul">
+        <li class="navbar_li">
+          <a href="{% url 'logistics:home' %}" class="nav_links {% if home_active %} active {% endif %}">Home</a>
+        </li>
+        <li class="navbar_li">
+          <a href="{% url 'logistics:contact-us' %}" class="nav_links {% if contact_active %} active {% endif %}">Contact Us</a>
+        </li>
+        {% if user.is_authenticated %}
+        {% if user|has_group:"staff" %}
+        <li class="navbar_li">
+          <a href="{% url 'logistics:add-shipment' %}" class="nav_links {% if add_shipment_active %} active {% endif %}">Add Shipment</a>
+        </li>
+        <li class="navbar_li">
+          <a href="{% url 'logistics:all-shipments' %}" class="nav_links {% if shipments_active %} active {% endif %}">Shipments</a>
+        </li>
+        <li class="navbar_li">
+          <a href="{% url 'dashboard' %}" class="nav_links {% if dashboard_active %} active {% endif %}">Dashboard</a>
+        </li>
+        {% endif %}
+        <li class="navbar_li">
+          <a href="{% url 'logout' %}" class="nav_links auth-link">Logout</a>
+        </li>
+        {% else %}
+        <li class="navbar_li">
+          <a href="{% url 'login' %}" class="nav_links auth-link">Sign~in</a>
+        </li>
+        {% endif %}
+      </ul>
+
+      <div class="nav_toggle" id="nav-toggle" onclick="toggle_sidebar()">
+        <img src="{% static 'img/icons/icons8-menu-50-orange.png' %}" alt="" class="img-toggle">
+      </div>
+    </div>
+
+  </nav>

@@ -1,0 +1,199 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block header %} 
+{% include 'nav.html' %}
+<div class="page-details overlay-bg">
+  <div class="inner-container details">
+      <h4>#Shipments</h4>
+      <p>
+        <span><img class="" src="{% static 'img/icons/icons8-shipment-50-fill-white.png' %}" alt="" srcset=""></span>
+        <span>Manage shipments</span>
+      </p>
+  </div>
+</div>
+{% endblock header %} 
+
+{% block modal %} 
+  <div class="d-none modalbox">
+    <div class="delete-modal">
+      <p>Are you sure you want to delete this Shipment <span id="refCode">"hsjhdjhdd6636"</span> ?</p>
+      <div class="btn-container">
+        <a href="" id="deleteShipmentLink">Delete</a>
+        <button type="button" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+{% endblock modal %}
+
+{% block content %}
+<div class="inner-container">
+  {% include 'notify.html' %}
+</div>
+
+<div class="inner-container">
+  <div class="crum-container">
+    <a  href="{% url 'dashboard' %}">Account / </a> 
+    <a class="{% if user_shipment_active %}active{% endif %}" href="{% url 'logistics:shipments' %}">my Shipments / </a> 
+    <a class="{% if all_shipment_active %}active{% endif %}" href="{% url 'logistics:all-shipments' %}">All Shipments / </a> 
+    <a href="{% url 'logistics:home' %}">Contact Us / </a> 
+    <span class="crum-tags">{{user.email}}</span>
+  </div>
+</div>
+
+<div class="inner-container dashboard">
+  <h3 class="wlc-user">Welcome {{user.first_name|title}}</h3>
+  <p class="mb-1">{{txt_writeup}}</p>
+
+  <div class="shipment_table">
+
+    <div class="web_table">
+      <table cellspacing=0>
+        <thead>
+          <tr>
+             <th class="counter">#</th>
+             <th>Tracking ID</th>
+             <th>Sender Name</th>
+             <th>Phone</th>
+             <th>Land/Air..</th>
+             <th>Liquid/Solid</th>
+             <th>Weight (Kg/Lbs) </th>
+             <th>Status</th>
+             {% if shipments.count > 0%}
+             <th>X</th>
+             {% endif %}
+          </tr>
+       </thead>
+       <tbody>
+         {% for shipment in shipments %}
+         
+        <tr>
+         <td class="counter"><p>{{forloop.counter}}</p></td>
+         <td><a href="{{shipment.get_update_url}}">{{shipment.tracking_id}}</a></td>
+         <td><p>{{shipment.sender_name|title}}</p></td>
+         <td><p>{{shipment.sender_phone}}</p></td>
+         <td><p>{{shipment.transport_method|title}}</p></td>
+         <td><p>{{shipment.substance_type|title}}</p></td>
+         <td><p>{{shipment.units|title}}({{shipment.unit_of_measurement|title}})</p></td>
+         <td><p>{{shipment.status|title}}</p></td>
+         <td>
+          {% if shipment.staff == user %}
+          <button type="button" class="pointer del-btn" onclick="showModal('{{shipment.tracking_id}}')">X</button>
+          {% endif %}
+        </td>
+       </tr>
+       {% empty %}
+        <tr class="empty-tr">
+            <td colspan="7">
+              {{empty_txt}}
+              <a class="empty-cart" href="{% url 'logistics:add-shipment' %}">Add Shipment
+              </a>
+            </td>
+        </tr>
+       {% endfor %}
+      </tbody>
+      </table>
+    </div>
+
+    <div class="sm_tab_table">
+      <table cellspacing=0>
+        <thead>
+          <tr>
+             <th>Tracking ID</th>
+             <th>Sender Name</th>
+             <th>Phone</th>
+             <th>Status</th>
+             {% if shipments.count > 0%}
+             <th>X</th>
+             {% endif %}
+          </tr>
+       </thead>
+       <tbody>
+         {% for shipment in shipments %}
+         
+        <tr>
+         <td><a href="">{{shipment.tracking_id}}aaaa</a></td>
+         <td><p>{{shipment.sender_name|title}}</p></td>
+         <td><p>{{shipment.sender_phone}}</p></td>
+         <td><p>{{shipment.status|title}}</p></td>
+         <td>
+          {% if shipment.staff == user %}
+          <button type="button" class="pointer del-btn" onclick="showModal('{{shipment.tracking_id}}')">X</button>
+          {% endif %}
+        </td>
+       </tr>
+       {% empty %}
+        <tr class="empty-tr">
+            <td colspan="7">
+              You have not made any shipment. 
+              <a class="empty-cart" href="{% url 'logistics:add-shipment' %}">Add Shipment
+              </a>
+            </td>
+        </tr>
+       {% endfor %}
+      </tbody>
+      </table>
+    </div>
+
+    <div class="mobile_table">
+      {% for shipment in shipments %}
+      <div class="mobile-table-div">
+        <div class="rows">
+          <h4>Tracking ID :</h4>
+          <a href="">{{shipment.tracking_id}}</a>
+        </div>
+        <div class="rows">
+          <h4>Sender Name : </h4>
+          <p>{{shipment.sender_name|title}}</p>
+        </div>
+        <div class="rows">
+          <h4>Receiever Name : </h4>
+          <p>{{shipment.reciever_name|title}}</p>
+        </div>
+        <div class="rows n-bdr">
+          <h4>Status : </h4>
+          <p>{{shipment.status|title}}</p>
+        </div>
+        <div class="flex btn-div">
+          <a href="" class="txt-ctr d-block update-link">update</a>
+          {% if shipment.staff == user %}
+          <button class="txt-ctr pointer d-block sm-table-del"  onclick="showModal('{{shipment.tracking_id}}')">Delete</button>
+          {% endif %}
+        </div>
+      </div>  
+      {% empty %}
+      <div class="empty-div">
+        No shipment registered. 
+          <a class="empty-cart" href="{% url 'logistics:add-shipment' %}">Add Shipment
+          </a>
+      </div>
+      {% endfor %}
+      
+    </div>
+
+  </div>
+</div>
+
+<div class="inner-container">
+  
+</div>
+
+{% endblock content %}
+
+{% block js %} 
+
+{% comment %} Code to delete Shipment from server {% endcomment %}
+<script>
+
+  function showModal(slug) {
+    const url = "{% url 'logistics:delete-shipment' 0 %}".replace('0', slug);
+    document.getElementById("refCode").innerText = `"${slug}"`;
+    const aTag = document.getElementById("deleteShipmentLink");
+    aTag.setAttribute('href', url);
+    modalBox.style.display = "flex";
+    body.style.overflow = "hidden";
+  }
+
+</script>
+
+{% endblock js %}

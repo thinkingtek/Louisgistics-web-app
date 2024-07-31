@@ -1,0 +1,152 @@
+@import "variables";
+
+
+// small tabs // 2columns surface duo
+@media screen and (min-width: 530px) {
+  .showcase h2 {
+    font-size: 2.2rem;
+  }
+
+  .grid {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .mobile_table {
+    display: none;
+  }
+
+  .shipment_table .sm_tab_table {
+    display: block;
+  }
+
+  // add shipment
+  .shipment-container {
+    .grid-column-two {
+      grid-template-columns: 1fr 1fr;
+    }
+    .grid-column-three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-column-four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+  }
+
+  // contact page
+  .contact-form-container {
+    padding: 2rem;
+
+    .grids {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  footer .footer-grids {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+// small tabs // 2columns //iPad mini
+@media screen and (min-width: 660px) {
+
+  .offer-grid,
+  .how-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid {
+    width: 100%;
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .shipment_table .web_table {
+    display: block;
+  }
+
+  .shipment_table .sm_tab_table {
+    display: none;
+  }
+
+  footer .footer-grids {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
+// for sidebar toggling small and mobile screens
+@media screen and (max-width: 870px) {
+  .navbar_ul {
+    position: absolute;
+    width: 50%;
+    height: calc(100vh - 4rem);
+    top: 4rem;
+    right: 0;
+    background-color: black;
+    transform: translateX(2500px);
+  }
+
+  .show-sidebar {
+    transform: translateX(0);
+    transition: transform 0.4s linear;
+  }
+
+  .nav_links {
+    text-align: center;
+    padding: 0.6rem 0.2rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+
+    &:hover {
+      background-color: antiquewhite;
+      color: $pry-color;
+    }
+  }
+
+  .active {
+    background-color: antiquewhite;
+    color: $pry-color;
+  }
+}
+
+// Navbar styling for big screens
+@media screen and (min-width: 870px) {
+  .nav_toggle {
+    display: none;
+  }
+
+  .navbar_ul {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  
+  .nav_links:hover {
+    font-size: 1.07rem;
+    color: $pry-color;
+  }
+
+  .auth-link {
+    z-index: 2;
+    display: inline-block;
+    background-color: $blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.35rem 0.8rem;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      color: white;
+      background-color: rgb(82, 82, 224);
+    }
+  }
+
+  .active {
+    color: $pry-color;
+  }
+}

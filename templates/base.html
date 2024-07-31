@@ -1,0 +1,43 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="description" content="{% if desc %}{{desc}}{% else %}LP Logistics gets your deliveries covered{% endif %} " />
+    <link rel="stylesheet" href="{% static '/css/resets_classes.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/media-queries.css' %}" />
+    
+    <title>{% if title %}{{title}}{% else %}LP Logisticz{% endif %}</title>
+  </head>
+  
+  <body id="body-id">
+
+    <span class="scrolltop" id="scroll-top" onclick="scrollToTop()">&uarr;</span>
+
+    {% block header %} 
+    {% endblock header %}
+    
+    {% block modal %} 
+    {% endblock modal %}
+
+    <main>
+      
+      {% block content %} 
+      {% endblock content %}
+
+    </main>
+    
+    
+    {% include 'footer.html' %} 
+    
+    <script src="{% static 'js/core.js' %}"></script>
+    {% block js %} 
+    
+    {% endblock js %}
+
+  </body>
+</html>

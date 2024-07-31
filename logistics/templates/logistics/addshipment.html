@@ -1,0 +1,139 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/resets_classes.css' %}">
+  <link rel="stylesheet" href="{% static 'css/addshipment.css' %}">
+  <link rel="stylesheet" href="{% static 'css/media-queries.css' %}">
+  <title>{% if title %}{{title}}{% else %}Shipment Form{% endif %}</title>
+
+</head>
+<body>
+  <div class="shipment-container overlay-bg">
+    <div class="form-container">
+      {% include 'notify.html' %}
+      <form action="" method="POST">
+        {% csrf_token %}
+        <h4>Sender Information 
+          <span class="lastly-updated">
+          {% if shipment.updated_staff != shipment.staff and shipment.created_timestamp < shipment.updated_timestamp %}
+          | Lastly updated by: &laquo{{shipment.updated_staff}}&raquo {{shipment.updated_timestamp|timesince}} ago
+          {% endif %}
+        </span>
+        </h4>
+        <div class="input-container grid-column-three">
+          <div class="form-inputs">
+            {{form.sender_name}}
+          </div>
+          <div class="form-inputs">
+            {{form.sender_phone}}
+            {% for errors in form.sender_phone.errors %}
+            <p class="errors">{{errors}}</p>
+            {% endfor %}
+          </div>
+          <div class="form-inputs">
+            {{form.email}}
+            {% for errors in form.email.errors %}
+            <p class="errors">{{errors}}</p>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="input-container grid-column-two">
+          <div class="form-inputs">
+            {{form.city_of_origin}}
+            {% for errors in form.city_of_origin.errors %}
+            <p class="errors">{{errors}}</p>
+            {% endfor %}
+          </div>
+          <div class="form-inputs">
+            {{form.state_of_origin}}
+          </div>
+        </div>
+        
+        <h4>Reciever Information</h4>
+        <div class="input-container">
+          <div class="form-inputs">
+            {{form.reciever_address}}
+          </div>
+        </div>
+        <div class="input-container grid-column-two">
+          <div class="form-inputs">
+            {{form.reciever_name}}
+          </div>
+          <div class="form-inputs">
+            {{form.reciever_phone}}
+            {% for errors in form.reciever_phone.errors %}
+            <p class="errors">{{errors}}</p>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="input-container grid-column-two">
+          <div class="form-inputs">
+            {{form.destination_city}}
+            {% for errors in form.destination_city.errors %}
+            <p class="errors">{{errors}}</p>
+            {% endfor %}
+          </div>
+          <div class="form-inputs">
+            {{form.destination_state}}
+          </div>
+        </div>
+
+        <h4>Shipment Information</h4>
+        <div class="input-container grid-column-four">
+          <div class="form-inputs">
+            {{form.transport_method}}
+          </div>
+          <div class="form-inputs">
+            {{form.substance_type}}
+          </div>
+          <div class="form-inputs">
+            {{form.unit_of_measurement}}
+          </div>
+          <div class="form-inputs">
+            {{form.units}}
+          </div>
+        </div>
+        {% if form.status %}
+        <div class="input-container">
+          <div class="form-inputs">
+            {{form.status}}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="input-container">
+          <div class="form-inputs">
+            {{form.desc}}
+          </div>
+        </div>
+        <div class="input-container">
+          <div class="form-inputs">
+            <button type="submit">{{submit_btn}}</button>
+          </div>
+        </div>
+        <div class="input-container">
+          <div class="form-inputs">
+            {% for error in form.non_field_errors %}
+            <p class="errors">{{error}}</p>
+            {% endfor %}
+          </div>
+        </div>
+        
+      </form>
+      <div class="links-tabs">
+        <a href="{{request.META.HTTP_REFERER}}">&laquo; Back</a>
+        <a href="{% url 'logistics:shipments' %}">shipments</a>
+        <a href="{% url 'logistics:add-shipment' %}"> Add shipment</a>
+        <a href="{% url 'logistics:home' %}">Home</a>
+    </div>
+  </div>
+  
+</body>
+
+  <script src="{% static 'js/core.js' %}"></script>
+</html>

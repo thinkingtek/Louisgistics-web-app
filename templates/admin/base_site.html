@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %} 
+{% load static %} 
+
+
+{% block branding %}
+<a href="{% url 'admin:index' %}"><h1 class="header-text">Louisgistic Xpress</h1></a>
+{% endblock branding %}
+
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock extrastyle %}

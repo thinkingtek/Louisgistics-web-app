@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block header %} 
+{% include 'nav.html' %}
+<div class="page-details overlay-bg">
+  <div class="inner-container details">
+      <h4>User Dashboard</h4>
+      <p>
+        <span><img class="" src="{% static 'img/icons/icons8-user-account-50-fill-white.png' %}" alt="" srcset=""></span>
+        <span>Manage your account</span>
+      </p>
+  </div>
+</div>
+{% endblock header %} 
+
+
+{% block content %}
+<div class="inner-container">
+  {% include 'notify.html' %}
+</div>
+
+<div class="inner-container">
+  <div class="crum-container">
+    <a class="active" href="{% url 'dashboard' %}">Account / </a> 
+    <a class="" href="{% url 'logistics:shipments' %}">Shipments / </a> 
+    <a class="" href="{% url 'password-change' %}">Change password / </a> 
+    <a href="{% url 'logistics:home' %}">Contact Us / </a> 
+    {% if user.is_superuser %}
+    <a href="{% url 'delete-inactive-users' %}">Delete users / </a>
+    {% endif %}
+    <span class="crum-tags">{{user.email}}</span>
+  </div>
+</div>
+
+<div class="inner-container dashboard">
+  <h3 class="wlc-user">Welcome {{user.first_name|title}}</h3>
+  <p class="para">kindly manage your account and shipments</p>
+
+ 
+</div>
+
+
+
+
+
+{% endblock content %}

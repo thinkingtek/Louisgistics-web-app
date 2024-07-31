@@ -1,0 +1,89 @@
+@import "variables";
+@import "fonts";
+
+* {
+  font-family: "roboto-regular";
+}
+
+#header {
+  background-color: black;
+
+
+  .header-text {
+    padding: 0.4rem 0;
+    color: $pry-color;
+    font-family: "rubik";
+
+    &:hover {
+      color: rgb(235, 235, 235);
+    }
+  }
+
+  #user-tools {
+
+    color: white;
+  }
+}
+
+#content-main caption {
+  background-color: black;
+
+  a {
+    color: $pry-color;
+    font-family: "roboto-regular";
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  tbody tr th a {
+    color: black;
+
+  }
+
+
+}
+
+
+a.section {
+  color: rebeccapurple;
+  font-family: "rubik";
+}
+
+#content-main tbody tr {
+  font-family: "roboto-medium";
+
+  a {
+    color: #447e9b;
+  }
+
+}
+
+.submit-row input[type='submit'] {
+  background-color: black;
+  font-family: "rubik";
+  color: $pry-color;
+
+  &:hover {
+    color: white;
+
+  }
+}
+
+div.breadcrumbs {
+  background-color: rgb(46, 46, 46);
+
+  a {
+    font-family: "rubik";
+    color: white;
+
+    &:hover {
+      color: $pry-color;
+    }
+  }
+}
+
+.module caption {
+  background-color: rgb(92, 92, 92);
+}

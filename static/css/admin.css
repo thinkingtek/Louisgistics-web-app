@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "poppins-bold";
+  src: url("/static/fonts/Poppins-Bold.ttf"); }
+@font-face {
+  font-family: "poppins-regular";
+  src: url("/static/fonts/Poppins-Regular.ttf"); }
+@font-face {
+  font-family: "rubik";
+  src: url("/static/fonts/Rubik-Regular.ttf"); }
+@font-face {
+  font-family: "roboto-bold";
+  src: url("/static/fonts/Roboto-Bold.ttf"); }
+@font-face {
+  font-family: "roboto-regular";
+  src: url("/static/fonts/Roboto-Regular.ttf"); }
+@font-face {
+  font-family: "roboto-medium";
+  src: url("/static/fonts/Roboto-Medium.ttf"); }
+@font-face {
+  font-family: "roboto-light";
+  src: url("/static/fonts/Roboto-Light.ttf"); }
+@font-face {
+  font-family: "opensan-reg";
+  src: url("/static/fonts/OpenSans/OpenSans-Medium.ttf"); }
+@font-face {
+  font-family: "opensan-light";
+  src: url("/static/fonts/OpenSans/OpenSans-Light.ttf"); }
+* {
+  font-family: "roboto-regular"; }
+
+#header {
+  background-color: black; }
+  #header .header-text {
+    padding: 0.4rem 0;
+    color: #f16821;
+    font-family: "rubik"; }
+    #header .header-text:hover {
+      color: #ebebeb; }
+  #header #user-tools {
+    color: white; }
+
+#content-main caption {
+  background-color: black; }
+  #content-main caption a {
+    color: #f16821;
+    font-family: "roboto-regular"; }
+    #content-main caption a:hover {
+      color: white; }
+  #content-main caption tbody tr th a {
+    color: black; }
+
+a.section {
+  color: rebeccapurple;
+  font-family: "rubik"; }
+
+#content-main tbody tr {
+  font-family: "roboto-medium"; }
+  #content-main tbody tr a {
+    color: #447e9b; }
+
+.submit-row input[type='submit'] {
+  background-color: black;
+  font-family: "rubik";
+  color: #f16821; }
+  .submit-row input[type='submit']:hover {
+    color: white; }
+
+div.breadcrumbs {
+  background-color: #2e2e2e; }
+  div.breadcrumbs a {
+    font-family: "rubik";
+    color: white; }
+    div.breadcrumbs a:hover {
+      color: #f16821; }
+
+.module caption {
+  background-color: #5c5c5c; }

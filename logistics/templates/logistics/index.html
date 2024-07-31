@@ -1,0 +1,91 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block header %} 
+{% include 'home-header.html' %}
+{% endblock header %} 
+{% block content %} 
+
+{% if messages %}
+  {% include 'notify.html' %}
+{% endif %}
+<!-- services -->
+<div class="inner-container services">
+  <h5>Our Services</h5>
+  <h3>What We Can Do For You</h3>
+  <div class="offer-grid">
+    <div class="grid">
+      <img src="{% static 'img/icons/icons8-in-transit-50.png' %}" alt="" srcset="">
+      <h4>Land Transport</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus obcaecati id nesciunt molestias ut at iste
+      </p>
+    </div>
+    <div class="grid">
+      <img src="{% static 'img/icons/icons8-airplane-mode-on-50.png' %}" alt="" srcset="">
+      <h4>Air Transport</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus obcaecati id nesciunt molestias ut at iste
+      </p>
+    </div>
+    <div class="grid">
+      <img src="{% static 'img/icons/icons8-water-transportation-50.png' %}" alt="" srcset="">
+      <h4>Ship Transport</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus obcaecati id nesciunt molestias ut at iste
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- How it works -->
+<section class="how-it-work">
+  <div class="inner-container">
+    <div class="head-text how-header">
+      <h3 class="">How it works</h3>
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="inner-container how-grid">
+    <div class="grid">
+      <p class="num">1</p>
+      <p>Register your package</p>
+      <p class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur id dolores sed quos facere minima ipsum atque harum? Sunt eos sed voluptates incidunt ea? Hic, reiciendis libero! Aperiam dicta, animi iste similique sapiente quo quod voluptatum id exercitationem voluptate nulla?</p>
+    </div>
+    <div class="grid">
+      <p class="num">2</p>
+      <p>Make A Payment</p>
+      <p class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur id dolores sed quos facere minima ipsum atque harum? Sunt eos sed voluptates incidunt ea? Hic, reiciendis libero! Aperiam dicta, animi iste similique sapiente quo quod voluptatum id exercitationem voluptate nulla?</p>
+    </div>
+    <div class="grid">
+      <p class="num">3</p>
+      <p>Track your Shipment</p>
+      <p class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur id dolores sed quos facere minima ipsum atque harum? Sunt eos sed voluptates incidunt ea? Hic, reiciendis libero! Aperiam dicta, animi iste similique sapiente quo quod voluptatum id exercitationem voluptate nulla?</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABout US -->
+<div class="inner-container">
+  <div class="head-text">
+    <h3 class="">About Our Company</h3>
+    <div class="line"></div>
+  </div>
+</div>
+
+<div class="inner-container about-grid">
+  <div class="writeups">
+    <h5>Leave the worry to Us</h5>
+    <h3>Safe Logistic & Transport Solutions That Saves Our Valuable Time!</h3>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia saepe voluptates nemo beatae autem ex possimus alias voluptatibus eos. A, inventore quae quo nisi doloremque nemo aliquam odio animi asperiores qui accusantium velit expedita et cupiditate libero fuga vitae ut commodi.?</p>
+    <div>
+      <a href="http://">MORE ABOUT US</a>
+    </div>
+  </div>
+  <div class="img-container">
+    <img src="{% static 'img/backgrounds/handy-wicaksono-brizG9kR6qI-unsplash.jpg' %}" alt="" srcset="">
+  </div>
+</div>
+
+
+{% endblock content %} 

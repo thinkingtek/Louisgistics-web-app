@@ -1,0 +1,22 @@
+{% include 'nav.html' %}
+<header class="home_header overlay-bg">
+  <div class="showcase">
+    <div class="inner-container">
+      <h2>Safe and Relaiable <span>Logistics</span> Solutions</h2>
+      <form action="{% url 'logistics:shipment-detail' %}" method="GET" class="tracking-form">
+        {% csrf_token %}
+        <div class="form-inputs">
+          {{form.track_id}}
+          {% if form.track_id.errors %}
+
+          {% for error in form.track_id.errors %}
+          <p class="error">{{error}}</p>
+          {% endfor %}
+        
+          {% endif %}
+        </div>
+        <button type="submit">TRACK</button>
+      </form>
+    </div>
+  </div>
+</header>
